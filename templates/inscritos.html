@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block app_content %}
+
+<h3>Evento</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Descrição</th>
+            <th>Início</th>
+            <th>Fim</th>
+            <th>Vagas</th>
+        <tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ evento.idEvento }}</td>
+            <td>{{ evento.descricao }}</td>
+            <td>{{ evento.inicio }}</td>
+            <td>{{ evento.fim }}</td>
+            <td>{{ evento.vagas }}</td>
+            <td><a href="/excluir?idE={{ evento.idEvento }}&idA={{ evento.idAgenda }}&idU={{ evento.idUsuario }}">Excluir</a> <td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Inscritos</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+        <tr>
+    </thead>
+    <tbody>
+        {% for inscrito in inscritos %}
+        <tr>
+            <td>{{ inscrito.nome }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

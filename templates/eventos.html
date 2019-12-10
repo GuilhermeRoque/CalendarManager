@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block app_content %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Descrição</th>
+            <th>Início</th>
+            <th>Fim</th>
+            <th>Vagas</th>
+        <tr>
+    </thead>
+    <tbody>
+        {% for evento in eventos %}
+        <tr>
+            <td>{{ evento.idEvento }}</td>
+            <td>{{ evento.descricao }}</td>
+            <td>{{ evento.inicio }}</td>
+            <td>{{ evento.fim }}</td>
+            <td>{{ evento.vagas }}</td>
+            {% if autenticado == False %}
+                <td><a href="/inscricao?idE={{ evento.idEvento }}&idA={{ evento.idAgenda }}&idU={{ evento.idUsuario }}">Inscrever</a> <td>
+            {% else %}
+                <td><a href="/excluir?idE={{ evento.idEvento }}&idA={{ evento.idAgenda }}&idU={{ evento.idUsuario }}">Excluir</a> <td>
+                <td><a href="/inscritos?idE={{ evento.idEvento }}&idA={{ evento.idAgenda }}&idU={{ evento.idUsuario }}">Inscritos</a> <td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

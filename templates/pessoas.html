@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block app_content %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+        <tr>
+    </thead>
+    <tbody>
+        {% for pessoa in pessoas %}
+        <tr>
+            <td>{{ pessoa.idUsuario }}</td>
+            <td>{{ pessoa.nome }}</td>
+            <td> <a href="/agendas?id={{ pessoa.idUsuario }}">Consultar</a> <td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

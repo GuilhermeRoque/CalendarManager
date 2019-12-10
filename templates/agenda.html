@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block app_content %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Descrição</th>
+        <tr>
+    </thead>
+    <tbody>
+        {% for agenda in agendas %}
+        <tr>
+            <td>{{ agenda.idAgenda }}</td>
+            <td>{{ agenda.descricao }}</td>
+            <td> <a href="/eventos?idA={{ agenda.idAgenda }}&idU={{ agenda.idUsuario}}">Consultar</a> <td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
