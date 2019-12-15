@@ -192,7 +192,7 @@ def inscricao():
 
         return render_template('index.html')
 
-    return render_template('inscricao.html', form=form)
+    return render_template('inscricao.html', form=form, message=None)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -266,7 +266,7 @@ def registro_evento():
 
             return redirect(url_for("agendas", id=session.get("id")))
 
-        return render_template('registro_evento.html', form=form)
+        return render_template('registro_evento.html', form=form, message=None)
 
     else:
         return redirect(url_for("autenticar"))

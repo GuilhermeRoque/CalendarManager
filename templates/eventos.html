@@ -21,12 +21,10 @@
             <td>{{ evento.fim }}</td>
             <td>{{ evento.vagas }}</td>
             {% if autenticado == True %}
-                <td>
                 <td><a href="/excluir?idE={{ evento.idEvento }}&idA={{ evento.idAgenda }}&idU={{ evento.idUsuario }}">Excluir</a> <td>
-                <td>
+                <td><a href="/inscritos?idE={{ evento.idEvento }}&idA={{ evento.idAgenda }}&idU={{ evento.idUsuario }}">Inscritos</a> <td>
             {% endif %}
                 <td><a href="/inscricao?idE={{ evento.idEvento }}&idA={{ evento.idAgenda }}&idU={{ evento.idUsuario }}">Inscrever</a> <td>
-                <td><a href="/inscritos?idE={{ evento.idEvento }}&idA={{ evento.idAgenda }}&idU={{ evento.idUsuario }}">Inscritos</a> <td>
         </tr>
         {% endfor %}
     </tbody>
