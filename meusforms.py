@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, IntegerField, FormField, SelectField, FieldList, DateField, \
-    DateTimeField, HiddenField
-from wtforms.validators import DataRequired
+    DateTimeField, HiddenField, BooleanField, TimeField
+from wtforms.validators import DataRequired, NumberRange
 
 '''
 Veja mais na documentação do WTForms
@@ -21,6 +21,13 @@ class LoginForm(FlaskForm):
     password = PasswordField('Senha', validators=[DataRequired("O preenchimento desse campo é obrigatório")])
     submit = SubmitField('Entrar')
 
+
+class AgendaForm(FlaskForm):
+    desc = StringField('Descrição', validators=[DataRequired("O preenchimento desse campo é obrigatório")])
+    status = SelectField(u'Status', choices=[('en', 'Ativada'), ('dis', 'Desativada')])
+    submit = SubmitField('Registrar')
+
+
 class RegisterForm(FlaskForm):
     name = StringField('Nome', validators=[DataRequired("O preenchimento desse campo é obrigatório")])
     submit = SubmitField('Inscrever')
@@ -29,21 +36,11 @@ class RegisterForm(FlaskForm):
     idU = ""
 
 
-class EnderecoForm(FlaskForm):
-    rua = StringField('Endereço', validators=[DataRequired])
-    cidade = StringField('Cidade', validators=[DataRequired])
-    uf = SelectField(u'Estado',choices=[('sc', 'Santa Catarina'), ('pr', 'Paraná')], validators=[DataRequired])
-    cep = StringField('CEP')
-
-class TelefoneForm(FlaskForm):
-    codigoPais = IntegerField('Código do país', validators=[DataRequired])
-    codigoDDD = IntegerField('DDD', validators=[DataRequired])
-    numero = StringField('Número')
-
-class FormDeRegistro(FlaskForm):
-    nome = StringField('Nome', validators=[DataRequired])
-    sobrenome = StringField('Sobrenome', validators=[DataRequired])
-    endereco = FormField(EnderecoForm,'Endereço residencial')
-    dataNasc = DateField('Data de nascimento', id='datepick',validators=[DataRequired])
-    telefoneCelular = FormField(TelefoneForm,'Telefone celular')
-    submit = SubmitField('Cadastrar')
+class EventoForm(FlaskForm):
+    desc = StringField('Descrição')
+    date = DateField('Dia', format='%d/%m/%Y', validators=[DataRequired("Valor de data inválido")])
+    inicio = TimeField('Início', format='%H:%M', validators=[DataRequired("Valor de horário inválido")])
+    fim = TimeField('Fim', format='%H:%M', validators=[DataRequired("Valor de horário inválido")])
+    vagas = IntegerField('Vagas', validators=[DataRequired("Valor numérico inválido"),
+                                              NumberRange(min=0, message="Valor deve ser positivo")])
+    submit = SubmitField('Registrar')

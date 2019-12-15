@@ -5,6 +5,7 @@
         <tr>
             <th>ID</th>
             <th>Descrição</th>
+            <th>Dia</th>
             <th>Início</th>
             <th>Fim</th>
             <th>Vagas</th>
@@ -15,17 +16,20 @@
         <tr>
             <td>{{ evento.idEvento }}</td>
             <td>{{ evento.descricao }}</td>
+            <td>{{ evento.dia }}</td>
             <td>{{ evento.inicio }}</td>
             <td>{{ evento.fim }}</td>
             <td>{{ evento.vagas }}</td>
-            {% if autenticado == False %}
-                <td><a href="/inscricao?idE={{ evento.idEvento }}&idA={{ evento.idAgenda }}&idU={{ evento.idUsuario }}">Inscrever</a> <td>
-            {% else %}
+            {% if autenticado == True %}
+                <td>
                 <td><a href="/excluir?idE={{ evento.idEvento }}&idA={{ evento.idAgenda }}&idU={{ evento.idUsuario }}">Excluir</a> <td>
-                <td><a href="/inscritos?idE={{ evento.idEvento }}&idA={{ evento.idAgenda }}&idU={{ evento.idUsuario }}">Inscritos</a> <td>
+                <td>
             {% endif %}
+                <td><a href="/inscricao?idE={{ evento.idEvento }}&idA={{ evento.idAgenda }}&idU={{ evento.idUsuario }}">Inscrever</a> <td>
+                <td><a href="/inscritos?idE={{ evento.idEvento }}&idA={{ evento.idAgenda }}&idU={{ evento.idUsuario }}">Inscritos</a> <td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
+<a href="/registro_evento?idA={{ idA }}" class="btn btn-primary">Adicionar</a>
 {% endblock %}

@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% block app_content %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
 <table class="table">
     <thead>
         <tr>
@@ -14,10 +16,26 @@
             <td>{{ agenda.descricao }}</td>
             <td> <a href="/eventos?idA={{ agenda.idAgenda }}&idU={{ agenda.idUsuario}}">Consultar</a> <td>
             {% if autenticado == True %}
-                <td> <a href="/desativar?idA={{ agenda.idAgenda }}&idU={{ agenda.idUsuario}}">Desativar</a> <td>
+                {% if agenda.estado == 1 %}
+                    <form action="/agendas" method="post">
+                        <input type="hidden" name="idA" value="{{ agenda.idAgenda }}">
+                        <input type="hidden" name="idU" value="{{ agenda.idUsuario }}">
+                        <input type="hidden" name="estado" value= 0>
+                        <button type="submit" class="btn-link">Desativar</button>
+                    </form>
+                {% else %}
+                    <form action="/agendas" method="post">
+                        <input type="hidden" name="idA" value="{{ agenda.idAgenda }}">
+                        <input type="hidden" name="idU" value="{{ agenda.idUsuario }}">
+                        <input type="hidden" name="estado" value= 1>
+                        <button type="submit" class="btn-link">Ativar</button>
+                    </form>
+                {% endif %}
             {% endif %}
         </tr>
         {% endfor %}
     </tbody>
 </table>
+<a href="/registro_agenda" class="btn btn-primary">Adicionar</a>
+
 {% endblock %}

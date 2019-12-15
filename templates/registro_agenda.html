@@ -3,12 +3,10 @@
 
 
 {% block app_content %}
-    <h1>Inscrição</h1>
+    <h1>Registro Agenda</h1>
     <div class="row">
         <div class="col-md-4">
             {{ wtf.quick_form(form, button_map={'submit':'primary'}) }}
         </div>
     </div>
-    <p>
-    <p class="row alert alert-danger">{{ message }}
 {% endblock %}
