@@ -53,7 +53,7 @@ Inscricao = Base.classes.Inscricao
 
 @nav.navigation()
 def meunavbar():
-    menu = Navbar('Gerenciador de Agenda')
+    menu = Navbar('')
     menu.items = [View('Home', 'inicio'), View('Gerenciar Agendas', 'autenticar'), View('Pessoas', 'pessoas')]
     return menu
 
@@ -66,19 +66,6 @@ def pessoas():
     else:
         pessoas = sessionSQL.query(Usuario).all()
     sessionSQL.close()
-    # pessoasJ = []
-    # columnsJ = []
-    # for p in pessoas:
-    #     d: object = p.__dict__
-    #     d2 = {"id": d.get('idUsuario'), "Nome": d.get('nome')}
-    #     print(d2)
-    #     pessoasJ.append(d2)
-    # for p in pessoasJ[0].keys():
-    #     columnsJ.append({"field": p, "title": p, "sortable": True})
-    # for c in columnsJ:
-    #     print(c)
-
-    # return render_template('pessoas.html', data=pessoasJ, columns=columnsJ)
     return render_template('pessoas.html', pessoas=pessoas)
 
 

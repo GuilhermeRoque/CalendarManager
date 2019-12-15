@@ -36,7 +36,10 @@ pip install -r requirements.txt
 ```shell
 python3 app.py usuario senha
 ```
-
+#### Usuários cadastrados
+1. Nome:Roque   Senha:12345
+2. Nome:Joao    Senha:54321
+3. Nome:Lucas   Senha:senha
 #### Modelagem do banco de dados
 
 ![model](db_model.png)

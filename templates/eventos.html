@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block app_content %}
+<h3>Eventos</h3>
 <table class="table">
     <thead>
         <tr>
@@ -29,5 +30,7 @@
         {% endfor %}
     </tbody>
 </table>
+{% if autenticado == True %}
 <a href="/registro_evento?idA={{ idA }}" class="btn btn-primary">Adicionar</a>
+{% endif %}
 {% endblock %}
