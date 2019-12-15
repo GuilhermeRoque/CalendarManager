@@ -1,30 +1,37 @@
-# Exemplo com Python3, Flask, SQLite e SQLAlchemy, Flask-SQLAlchemy e Flask-WTF
+# Gerenciador de Agendas
 
-Um exemplo com foco na simplicidade para ilustrar os conceitos fundamentais para fazer uma aplicação web com usando Flask-SQLAlchemy e Flask-WTF
+Um serviço WEB para gerenciar agendas e eventos.
+
+#### Requisitos funcionais
+1. Criar e visualizar agendas.
+2. Ativar ou desativar uma agenda.
+3. Criar, visualizar e excluir eventos.
+4. Realizar inscrições em eventos.
 
 
-## Preparando ambiente com virtualenv
+#### Requisitos não funcionais
+1. Ter instalado o interpretador python3
+2. Ter instalado os módulos python especificados em 'requirements.txt'
+3. Ser possível a criação do socket TCP com IP localhost e porta 5000
 
+#### Regras de negócio
+1. Um evento deve começar e acabar na mesma data.
+2. Somente o usuário autenticado pode configurar suas agendas ou eventos.
+3. Um nome não pode estar inscrito em mais de um evento da mesma agenda.
+4. Não deve ser possível criar eventos em datas passadas.
+5. Só deve ser possível a visualização de agendas ativas de outros usuários.
 
+#### Preparando ambiente com virtualenv
 
 ```shell
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 ```
-
-
-
-## Exemplo 01
-
-Em [exemplo 01](exemplo01) tem um pequeno exemplo de como montar um formulário HTML usando o Flask-WTF
-
-
-
-## Exemplo 02
-
-Em [exemplo 02](exemplo02) tem um pequeno exemplo de como usar o Flask-SQLAlchemy para criar tabelas e para fazer uma simples consulta em um exemplo de autenticação de usuários.
-
-## Exemplo 03
-
-Em [exemplo 03](exemplo03) tem um pequeno exemplo de como usar Flask-Bootstrap, Flask-WTForms e Flask-Nav
+#### Execução do programa
+1. Preparar o ambiente utilizando o virtualenv ou instalando os módulos globalmente.
+2. Ir para o diretório raiz do projeto.
+3. Executar:
+```shell
+python3 app.py
+```
