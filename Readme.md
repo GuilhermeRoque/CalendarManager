@@ -37,3 +37,8 @@ pip install -r requirements.txt
 ```shell
 python3 app.py usuario senha
 ```
+
+#### Modelagem do banco de dados
+
+![model](db_model.png)
+
