@@ -12,6 +12,7 @@ Exemplos com Bootstrap - https://getbootstrap.com/docs/3.3/getting-started/#exam
 Veja mais detalhes nesse tutorial: https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xi-facelift
 
 '''
+import sys
 from datetime import datetime, date
 
 import sqlalchemy
@@ -29,8 +30,6 @@ from werkzeug.utils import redirect
 
 from meusforms import LoginForm, RegisterForm, AgendaForm, EventoForm
 
-from dadostabela import *
-
 SECRET_KEY = 'aula de BCD - string aleatória'
 
 app = Flask(__name__)
@@ -39,8 +38,9 @@ app.secret_key = SECRET_KEY
 boostrap = Bootstrap(app)  # isso habilita o template bootstrap/base.html
 nav = Nav()
 nav.init_app(app)  # isso habilita a criação de menus de navegação do pacote Flask-Nav
-
-engine = create_engine("mysql+mysqlconnector://guilherme:56205340@localhost:3306/mydb")
+user_mysql = sys.argv[1]
+pass_mysql = sys.argv[2]
+engine = create_engine("mysql+mysqlconnector://" + user_mysql + ":" + pass_mysql +"@localhost:3306/mydb")
 Session = sessionmaker(bind=engine)
 Base = automap_base()
 Base.prepare(engine, reflect=True)
