@@ -25,6 +25,9 @@
 </table>
 
 <h3>Inscritos</h3>
+{% if inscritos|length <= 0 %}
+<p class = "alert alert-warning" >Não há inscritors para listar</p>
+{% else %}
 <table class="table">
     <thead>
         <tr>
@@ -39,5 +42,5 @@
         {% endfor %}
     </tbody>
 </table>
-
+{% endif %}
 {% endblock %}

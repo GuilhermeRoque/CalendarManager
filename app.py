@@ -147,7 +147,11 @@ def eventos():
             autenticado = True
 
         sessionSQL = Session()
-        eventos = sessionSQL.query(Evento).filter(Evento.idAgenda == idA, Evento.idUsuario == idU).all()
+        if autenticado:
+            eventos = sessionSQL.query(Evento).filter(Evento.idAgenda == idA, Evento.idUsuario == idU).all()
+        else:
+            eventos = sessionSQL.query(Evento).filter(Evento.idAgenda == idA,
+                                                      Evento.idUsuario == idU, Evento.vagas > 0).all()
         sessionSQL.close()
 
         return render_template('eventos.html', eventos=eventos, autenticado=autenticado, idA=idA)
@@ -187,6 +191,7 @@ def autenticar():
     if session.get("id") is not None:
         return redirect(url_for("agendas", id=session.get("id")))
     form = LoginForm()
+    message = None
     if form.validate_on_submit():
         login = form.username.data
         sessionSQL = Session()
@@ -196,8 +201,10 @@ def autenticar():
                 session["id"] = str(usuario.idUsuario)
                 sessionSQL.close()
                 return redirect(url_for("agendas", id=usuario.idUsuario))
+        else:
+            message = "Nome ou senha incorretos"
         sessionSQL.close()
-    return render_template('login.html', title='Autenticação de usuários', form=form)
+    return render_template('login.html', title='Autenticação de usuários', form=form, message = message)
 
 
 @app.route('/registro_agenda', methods=['GET', 'POST'])

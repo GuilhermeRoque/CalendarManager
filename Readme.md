@@ -39,7 +39,7 @@ python3 app.py usuario senha
 #### Usuários cadastrados
 1. Nome:Roque   Senha:12345
 2. Nome:Joao    Senha:54321
-3. Nome:Lucas   Senha:senha
+3. Nome:Lucas   Senha:lucas
 #### Modelagem do banco de dados
 
 ![model](db_model.png)

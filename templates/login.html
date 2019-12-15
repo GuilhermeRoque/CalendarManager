@@ -9,4 +9,8 @@
             {{ wtf.quick_form(form, button_map={'submit':'primary'}) }}
         </div>
     </div>
+    {% if message != None %}
+        <p>
+        <p class="row alert alert-danger">{{ message }}
+    {% endif %}
 {% endblock %}

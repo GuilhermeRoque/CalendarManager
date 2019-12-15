@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block app_content %}
 <h3>Eventos</h3>
+{% if eventos|length <= 0 %}
+<p class = "alert alert-warning" >Não há eventos para listar</p>
+{% else %}
 <table class="table">
     <thead>
         <tr>
@@ -25,11 +28,14 @@
                 <td><a href="/excluir?idE={{ evento.idEvento }}&idA={{ evento.idAgenda }}&idU={{ evento.idUsuario }}">Excluir</a> <td>
                 <td><a href="/inscritos?idE={{ evento.idEvento }}&idA={{ evento.idAgenda }}&idU={{ evento.idUsuario }}">Inscritos</a> <td>
             {% endif %}
-                <td><a href="/inscricao?idE={{ evento.idEvento }}&idA={{ evento.idAgenda }}&idU={{ evento.idUsuario }}">Inscrever</a> <td>
+                {% if evento.vagas > 0 %}
+                    <td><a href="/inscricao?idE={{ evento.idEvento }}&idA={{ evento.idAgenda }}&idU={{ evento.idUsuario }}">Inscrever</a> <td>
+                {% endif %}
         </tr>
         {% endfor %}
     </tbody>
 </table>
+{% endif %}
 {% if autenticado == True %}
 <a href="/registro_evento?idA={{ idA }}" class="btn btn-primary">Adicionar</a>
 {% endif %}

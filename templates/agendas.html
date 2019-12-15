@@ -3,6 +3,9 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 
 <h3>Agendas</h3>
+{% if agendas|length <= 0 %}
+<p class = "alert alert-warning" >Não há eventos para listar</p>
+{% else %}
 <table class="table">
     <thead>
         <tr>
@@ -15,7 +18,7 @@
         <tr>
             <td>{{ agenda.idAgenda }}</td>
             <td>{{ agenda.descricao }}</td>
-            <td> <a href="/eventos?idA={{ agenda.idAgenda }}&idU={{ agenda.idUsuario}}">Consultar</a> <td>
+            <td> <a href="/eventos?idA={{ agenda.idAgenda }}&idU={{ agenda.idUsuario}}">Detalhe</a> <td>
             {% if autenticado == True %}
                 {% if agenda.estado == 1 %}
                     <form action="/agendas" method="post">
@@ -37,6 +40,7 @@
         {% endfor %}
     </tbody>
 </table>
+{% endif %}
 {% if autenticado == True %}
 <a href="/registro_agenda" class="btn btn-primary">Adicionar</a>
 {% endif %}
