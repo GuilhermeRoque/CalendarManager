@@ -39,7 +39,7 @@ CREATE TABLE `Agenda` (
 
 LOCK TABLES `Agenda` WRITE;
 /*!40000 ALTER TABLE `Agenda` DISABLE KEYS */;
-INSERT INTO `Agenda` VALUES (1,'Agenda1',1,_binary '\0'),(2,'Agenda2',1,_binary ''),(3,'Agenda1',2,_binary ''),(4,'Agenda2',2,_binary ''),(5,'Agenda22',1,_binary '');
+INSERT INTO `Agenda` VALUES (1,'Agenda1',1,_binary ''),(2,'Agenda2',1,_binary '\0'),(3,'Agenda1',2,_binary ''),(4,'Agenda2',2,_binary ''),(5,'Agenda22',1,_binary '');
 /*!40000 ALTER TABLE `Agenda` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -62,7 +62,7 @@ CREATE TABLE `Evento` (
   PRIMARY KEY (`idEvento`,`idAgenda`,`idUsuario`),
   KEY `fk_Event_Agenda1_idx` (`idAgenda`,`idUsuario`),
   CONSTRAINT `fk_Event_Agenda1` FOREIGN KEY (`idAgenda`, `idUsuario`) REFERENCES `Agenda` (`idAgenda`, `idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -71,7 +71,7 @@ CREATE TABLE `Evento` (
 
 LOCK TABLES `Evento` WRITE;
 /*!40000 ALTER TABLE `Evento` DISABLE KEYS */;
-INSERT INTO `Evento` VALUES (1,'2019-02-03','00:00:00','01:00:00',1,1,'Evento1',5),(2,'2019-02-03','01:00:00','02:00:00',1,1,'Evento1',5),(3,'2019-02-04','02:00:00','03:00:00',1,1,'Evento2',5),(4,'2019-02-05','03:00:00','04:00:00',2,1,'Evento3',4),(5,'2019-02-06','04:00:00','05:00:00',2,1,'Evento4',5),(7,'2019-02-07','05:00:00','06:00:00',3,2,'Evento5',5),(8,'2019-02-08','06:00:00','07:00:00',3,2,'Evento6',5),(9,'2019-02-10','07:00:00','08:00:00',4,2,'Evento7',5),(10,'2019-02-09','08:00:00','09:00:00',4,2,'Evento8',5);
+INSERT INTO `Evento` VALUES (1,'2019-02-03','00:00:00','01:00:00',1,1,'Evento1',5),(2,'2019-02-03','01:00:00','02:00:00',1,1,'Evento1',5),(3,'2019-02-04','02:00:00','03:00:00',1,1,'Evento2',5),(4,'2019-02-05','03:00:00','04:00:00',2,1,'Evento3',4),(5,'2019-02-06','04:00:00','05:00:00',2,1,'Evento4',0),(7,'2019-02-07','05:00:00','06:00:00',3,2,'Evento5',5),(8,'2019-02-08','06:00:00','07:00:00',3,2,'Evento6',5),(9,'2019-02-10','07:00:00','08:00:00',4,2,'Evento7',5),(10,'2019-02-09','08:00:00','09:00:00',4,2,'Evento8',5),(11,'2019-02-04','02:00:00','03:00:00',1,1,'EventoX',0);
 /*!40000 ALTER TABLE `Evento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -100,6 +100,7 @@ CREATE TABLE `Inscricao` (
 
 LOCK TABLES `Inscricao` WRITE;
 /*!40000 ALTER TABLE `Inscricao` DISABLE KEYS */;
+INSERT INTO `Inscricao` VALUES ('Marcio',1,1,1),('Marcio',2,1,4),('Gabriel',3,2,7),('Gabriel',4,2,9),('Joao',1,1,11);
 /*!40000 ALTER TABLE `Inscricao` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -138,4 +139,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-15 11:55:24
+-- Dump completed on 2019-12-15 21:32:42
