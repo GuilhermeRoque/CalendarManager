@@ -1,6 +1,6 @@
 # Gerenciador de Agendas
 
-Um serviço WEB para gerenciar agendas e eventos.
+Uma aplicação WEB para gerenciar agendas e eventos.
 
 #### Requisitos funcionais
 1. Criar e visualizar agendas.
